@@ -1,2 +1,5 @@
 - auto fill 
 - err function
+- len / cap
+- map( imlo hato bulsa)
+- checks the error immediatly 
