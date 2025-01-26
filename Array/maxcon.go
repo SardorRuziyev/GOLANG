@@ -22,5 +22,5 @@ func findMaxConsec(nums []int) int {
 
 func main() {
 	nums := []int{1, 1, 0, 1, 1, 1}
-	fmt.Println("Maximum consecutive 1's:", findMaxConsec(nums))
+	fmt.Println("Max:", findMaxConsec(nums))
 }
