@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	digits := []int{1, 9, 8}
+	digits := []int{1, 2, 9}
 	// result := plusOne(digits)
 	fmt.Println(plusOne(digits))
 
