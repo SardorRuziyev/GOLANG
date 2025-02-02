@@ -20,3 +20,24 @@ func findMax(nums []int) int {
 	}
 	return maxValue
 }
+
+func findMax(nums []int)int{
+
+	maxValue := 0
+
+	for i:=0; i<len(nums); i++{
+		if 
+	}
+
+}
+func findMax(nums []int)int {
+
+}
+
+func findMin(nums []int){
+
+}
+
+removeDip(nums []int)int{
+
+}

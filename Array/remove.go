@@ -3,10 +3,10 @@ package main
 import "fmt"
 
 func main() {
-	nums := []int{3, 2, 2, 3}
-	val := 3
+	nums := []int{0, 1, 2, 2, 3, 0, 4, 2}
+	val := 2
 	j := removeElement(nums, val)
-	fmt.Println(nums[:j])
+	fmt.Println(nums, j)
 
 }
 func removeElement(nums []int, val int) int {
