@@ -4,6 +4,7 @@ import "fmt"
 
 func main() {
 	nums := []int{3, 4, 6, 7, 9}
+	extra := 3
 	fmt.Println(findMax(nums))
 
 }
@@ -18,6 +19,13 @@ func findMax(nums []int) int {
 
 		}
 	}
+	 for i:=0; i< len(nums); i++ {
+		if extra + maxValue >= maxValue {
+			result[i] = true
+		} else {
+			result [i]= false
+		}
+	 }
 	return maxValue
 }
 
