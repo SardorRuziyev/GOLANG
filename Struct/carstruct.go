@@ -9,8 +9,8 @@ type Car struct {
 	Mileage int
 }
 
-func (c Car) Drive() int {
-	c.Mileage 
+func (c Car) Drive(km int) int {
+	c.Mileage += km
 	fmt.Print()
 
 }

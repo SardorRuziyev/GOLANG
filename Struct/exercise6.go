@@ -14,7 +14,7 @@ type University struct {
 }
 
 func (u *University) BestStudent() Student {
-	best := Student{}
+	best := 
 
 	for _, student := range u.Students {
 		if student.GPA > best.GPA {
