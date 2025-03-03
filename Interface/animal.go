@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*
 Hayvonlar va Ularning Ovozlari
  1. Animal nomli interface yarating. Unda quyidagi methodlar bo‘lsin:
@@ -79,3 +80,6 @@ func main(){
 	bird := Bird{name: "bird"}
 
 }
+=======
+package main
+>>>>>>> eec1064ec19710ca2f9fc2f6097371297182c3ff

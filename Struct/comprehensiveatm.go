@@ -18,11 +18,13 @@ type Card struct {
 	FailedAttempts     int
 	IsBlocked          bool
 }
+
 type Transaction struct {
 	Amount    float64
 	Type      string
 	Timestamp time.Time
 }
+
 type ATM struct {
 	Location      string
 	CashAvailable float64
@@ -36,6 +38,7 @@ type Bank struct {
 func (c *Card) CheckBalance() float64 {
 	return c.Balance
 }
+
 func (c *Card) Withdraw(amount float64, atm *ATM) bool {
 	if c.IsBlocked {
 		fmt.Println("card is bloacked")
@@ -54,7 +57,7 @@ func (c *Card) Withdraw(amount float64, atm *ATM) bool {
 
 	atm.CashAvailable = atm.CashAvailable - amount
 
-	c.TransactionHistory = append(c.Transaction, Transaction{
+	c.TransactionHistory = append(c.TransactionHistory, Transaction{
 		Amount:    amount,
 		Type:      "withdraw",
 		Timestamp: time.Now(),
@@ -63,7 +66,6 @@ func (c *Card) Withdraw(amount float64, atm *ATM) bool {
 	fmt.Println("new balance", c.Balance)
 
 	return true
-
 }
 
 func (c *Card) Deposit(amount float64) {
@@ -106,8 +108,8 @@ func (c *Card) GetLastTransactions(n int) []Transaction {
 
 func main() {
 	bank := &Bank{
-		Name:    "Hamkor",
-		Accouts: make(map[string]*Card),
+		Name:     "Hamkor",
+		Accounts: make(map[string]*Card),
 	}
 
 	card1 := &Card{
@@ -130,7 +132,7 @@ func main() {
 	bank.Accounts[card1.CardNumber] = card1
 	bank.Accounts[card2.CardNumber] = card2
 
-	user1 = &User{
+	user1 := &User{
 		ID:   1,
 		Name: "Eshmirza",
 		Card: card1,
@@ -146,5 +148,6 @@ func main() {
 		Bank:          bank,
 	}
 	fmt.Printf("%s ning balansi: %.2f\n", user1.Name, user1.Card.CheckBalance())
-
+	fmt.Printf("%s ning balansi: %.2f\n", user2.Name, user2.Card.CheckBalance())
+	fmt.Println(atm.Location)
 }

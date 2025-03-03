@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*
 Restoran buyurtmalarini boshqarish
 Vazifa:
@@ -25,3 +26,6 @@ type OrderManager interface {
 func main(){
 
 }
+=======
+package main
+>>>>>>> eec1064ec19710ca2f9fc2f6097371297182c3ff

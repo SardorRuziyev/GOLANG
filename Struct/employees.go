@@ -6,7 +6,7 @@ type Employee struct {
 	ID           int
 	Name         string
 	DepartmentID int
-	Projects     []string
+	//Projects     []Project
 }
 type Department struct {
 	ID        int
@@ -21,13 +21,18 @@ type Project struct {
 	Employees    []Employee
 }
 
-func (e *Employee) AssignToProject(projectName Project) {
-	e.Projects = append(e.Projects, projectName)
+func (e *Employee) AssignToProject(projectName *Project) {
+	projectName.Employees = append(projectName.Employees, *e)
 }
+
 func (d *Department) AddEmployee(employee Employee) {
 	d.Employees = append(d.Employees, employee)
-
 }
+
+func (p *Project) AddEmployee(employee Employee) {
+	p.Employees = append(p.Employees, employee)
+}
+
 func (d *Department) GetEmployees() []Employee {
 	return d.Employees
 
@@ -38,37 +43,33 @@ func main() {
 		ID:           1,
 		Name:         "Eshmirza",
 		DepartmentID: 101,
-		Projects:     []string{},
 	}
 	employee2 := Employee{
 		ID:           2,
 		Name:         "Toshmirza",
 		DepartmentID: 102,
-		Projects:     []string{},
 	}
-	// employee3 := Employee{
-	// 	ID:           3,
-	// 	Name:         "Toshpolat",
-	// 	DepartmentID: 101,
-	// 	Projects:     []string{},
-	// }
-	// employee4 := Employee{
-	// 	ID:           4,
-	// 	Name:         "EshPolat",
-	// 	DepartmentID: 102,
-	// 	Projects:     []string{},
-	// }
+	employee3 := Employee{
+		ID:           3,
+		Name:         "Toshpolat",
+		DepartmentID: 101,
+	}
+	employee4 := Employee{
+		ID:           4,
+		Name:         "EshPolat",
+		DepartmentID: 102,
+	}
 
-	department1 := Department{ID: 101, Name: "Human Resource", Employees: []Employee{}}
+	department1 := Department{ID: 101, Name: "Human Resource", Employees: []Employee{employee1, employee2, employee3, employee4}}
 	//department2 := Department{ID: 102, Name: "ENginering", Employees: []Employee{}}
 
-	project1 := Project{ID: 201, Name: "AI Robotics", DepartmentID: 101, Employees: []Employee{}}
-	project2 := Project{ID: 202, Name: "Research on Robots", DepartmentID: 102, Employees: []Employee{}}
+	project1 := Project{ID: 201, Name: "AI Robotics", DepartmentID: 101, Employees: []Employee{employee1, employee2}}
+	project2 := Project{ID: 202, Name: "Research on Robots", DepartmentID: 102, Employees: []Employee{employee2, employee3, employee4}}
 
-	employee1.AssignToProject(project1)
-	employee2.AssignToProject(project2)
+	employee1.AssignToProject(&project1)
+	employee2.AssignToProject(&project2)
 
-	project1.AddEmployee(employee1)
+	department1.AddEmployee(employee1)
 	project2.AddEmployee(employee2)
 
 	fmt.Println("Employees in Engineering Department:")

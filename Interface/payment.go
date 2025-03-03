@@ -105,5 +105,4 @@ func main() {
 	for _, transaction := range processor.TransactionHistory() {
 		fmt.Println(transaction)
 	}
-
 }

@@ -28,13 +28,13 @@ func (c *Card) CheckBalance() float64 {
 	return c.Balance
 
 }
+
 func (w *Card) Withdraw(amount float64) {
 	if amount <= w.Balance {
 		w.Balance -= amount
 	} else {
 		fmt.Println("Insufficient Fund")
 	}
-
 }
 func (d *Card) Deposit(amont float64) {
 	d.Balance += amont
@@ -68,5 +68,4 @@ func main() {
 	// }
 
 	fmt.Printf("balance: ", user.Card.CheckBalance())
-
 }
