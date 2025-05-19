@@ -1,0 +1,39 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Alice",
+      "password": "123",
+      "courses": [1]
+    },
+    {
+      "id": 2,
+      "name": "Bob",
+      "password": "456",
+      "courses": []
+    }
+  ],
+  "courses": [
+    {
+      "id": 1,
+      "title": "Golang Fundamentals",
+      "instructor": "Jane Doe",
+      "price": 49.99,
+      "enrolled": [1]
+    },
+    {
+      "id": 2,
+      "title": "Python for Beginners",
+      "instructor": "John Smith",
+      "enrolled": []
+    }
+  ],
+  "reviews": [
+    {
+      "course_id": 1,
+      "user_id": 1,
+      "text": "Juda foydali kurs!",
+      "rating": 5
+    }
+  ]
+}

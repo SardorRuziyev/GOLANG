@@ -1,46 +1,45 @@
-/*ICourse interface – Barcha kurslar uchun umumiy metodlar
-• PaidCourse, FreeCourse struct – Pullik va bepul kurslar
-• GetCourseInfo() – Kurs haqida ma’lumot olish
-• Enroll() – Kursga yozilish
-*/
-
 package models
 
 import "fmt"
 
 type ICourse interface {
-	GetCourseInfo() string
-	Enroll()
+	GetCourseID() string
+
+	EnrollStudent(userID int) error
+	GetID() int
+	GetName() string
 }
-type Course struct {
-	ID          int     `json:"id"`
-	Title       string  `json:"title"`
-	Description string  `json:"description"`
-	Price       float64 `json:"price"`
-	IsFree      bool    `json:"is_free"`
-}
+
 type PaidCourse struct {
-	Course
+	ID       int     `json:"id"`
+	Title    string  `json:"title"`
+	Price    float64 `json:"price"`
+	Enrolled []int   `json:"enrolled"`
 }
-
 type FreeCourse struct {
-	Course
+	ID       int    `json:"id"`
+	Title    string `json:"title"`
+	Enrolled []int  `json:"enrolled"`
 }
 
-func (c *PaidCourse) GetCourseInfo() string {
-	return c.Title + " - $" + fmt.Sprintf("%.2f", c.Price)
+func (p PaidCourse) GetCourseID() string {
+	return fmt.Sprintf("%d", p.ID)
 }
-
-func (c *PaidCourse) Enroll(userID int) error {
-	// Simulate payment logic
+func (p PaidCourse) EnrollStudent(userID int) error {
+	p.Enrolled = append(p.Enrolled, userID)
 	return nil
 }
-
-func (c *FreeCourse) GetCourseInfo() string {
-	return c.Title + " - Free"
+func (p PaidCourse) GetID() int {
+	return p.ID
 }
 
-func (c *FreeCourse) Enroll(userID int) error {
-	// No payment required
+func (f FreeCourse) GetCourseID() string {
+	return f.Title
+}
+func (f FreeCourse) EnrollStudent(userID int) error {
+	f.Enrolled = append(f.Enrolled, userID)
 	return nil
+}
+func (f FreeCourse) GetID() int {
+	return f.ID
 }

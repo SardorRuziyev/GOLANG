@@ -1,30 +1,41 @@
 package storage
 
 import (
-	"encoding/json"
+	"edugo/models"
 	"os"
 )
 
 type Data struct {
-	Users   []models.User   `json:"users"`
-	Courses []models.Course `json:"courses"`
+	Users []models.User `json:"users"`	
+	Courses []models.ICourse `json:"courses"`
 	Reviews []models.Review `json:"reviews"`
+
 }
 
-var data Data
+var filePath = "storage/data.json"
 
-func LoadData() error {
-	file, err := os.ReadFile("storage/data.json")
+func LoadData() (*Data, error) {
+	file, err := os.Open(filePath)
 	if err != nil {
+		return nil, err
+	}
+	defer file.Close()
+
+	bytes, err := os.ReadFile(filePath)
+	if err != nil {
+		return nil, err
+	}
+	var data Data
+	if err := json.Unmarshal(bytes, &data); err != nil {
+		return nil, err
+	}
+
+	func SaveData(data *Data) error {
+	bytes, err := json.Marshal(data)
+	if err != nil {	
 		return err
 	}
-	return json.Unmarshal(file, &data)
-}
 
-func SaveData() error {
-	file, err := json.MarshalIndent(data, "", "  ")
-	if err != nil {
-		return err
-	}
-	return os.WriteFile("storage/data.json", file, 0644)
+
+	err = os.WriteFile(filePath, bytes, 0644)
 }
